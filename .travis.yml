@@ -1,4 +1,3 @@
-install: travis_wait 30 mvn install
 language: node_js
 node_js: node
 services:
@@ -10,3 +9,4 @@ deploy:
   app: dry-depths-20265
   on:
     repo: anthonypagano/hopindex-api
+install: travis_wait mvn install
