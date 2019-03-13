@@ -9,4 +9,3 @@ deploy:
   app: dry-depths-20265
   on:
     repo: anthonypagano/hopindex-api
-install: travis_wait mvn install
