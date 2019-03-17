@@ -1,0 +1,1 @@
+exports.API_ORIGIN = 'https://dry-depths-20265.herokuapp.com';
