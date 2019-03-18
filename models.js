@@ -29,4 +29,4 @@ beersSchema.methods.serialize = function() {
 
 const Beers = mongoose.model('Beers', beersSchema);
 
-module.exports = {Beer};
+module.exports = {Beers};
