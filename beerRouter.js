@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const router = express.Router();
 
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
     Beer
         .find()
         .then(beers => {
-            res.json(beers.map(beer => beers.serialize()));
+            res.json(beers.map(beer => beer.serialize()));
         })
         .catch(err => {
             console.error(err);
@@ -20,7 +21,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Beer
         .findById(req.params.id)
-        .then(beers => res.json(beers.serialize()))
+        .then(beer => res.json(beer.serialize()))
         .catch(err => {
             console.error(err);
             res.status(500).json({ error: '500 Server Error' });

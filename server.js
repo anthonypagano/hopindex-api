@@ -3,12 +3,20 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const { DATABASE_URL, PORT } = require('./config');
+
 const cors = require('cors');
 const {CLIENT_ORIGIN} = require('./config');
+
+const { TEST_DATABASE_URL, PORT } = require('./config');
+
 const app = express();
 const beerRouter = require('./beerRouter');
 const recentRouter = require('./recentRouter');
+
+app.use(morgan('common'));
+app.use(express.json());
+
+app.use(express.static('public'));
 
 app.use(
   cors({
@@ -16,27 +24,12 @@ app.use(
   })
 );
 
-app.use(morgan('common'));
-app.use(express.json());
-
-app.use(express.static('public'));
-
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 
 app.use('/beer', beerRouter);
 app.use('/recent', recentRouter);
-
-app.get('/api/*', (req, res) => {
-  res.json({ok: true});
-});
-
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
-
-app.use('*', function (req, res) {
-  res.status(404).json({ message: 'Not Found' });
-});
 
 // both runServer and closeServer need to access the same
 // server object, so we declare `server` here, and then when
@@ -46,9 +39,11 @@ let server;
 // this function starts our server and returns a Promise.
 // In our test code, we need a way of asynchronously starting
 // our server, since we'll be dealing with promises there.
-function runServer(DATABASE_URL, port = PORT) {
+function runServer(TEST_DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
-      mongoose.connect(DATABASE_URL, err => {
+      mongoose.connect(TEST_DATABASE_URL, 
+        { useNewUrlParser: true }, 
+        err => {
           if (err) {
               return reject(err);
           }
@@ -81,7 +76,7 @@ function closeServer() {
 // if server.js is called directly (aka, with `node server.js`), this block
 // runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
 if (require.main === module) {
-  runServer(DATABASE_URL).catch(err => console.error(err));
+  runServer(TEST_DATABASE_URL).catch(err => console.error(err));
 }
 
 module.exports = { runServer, app, closeServer };
