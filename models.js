@@ -1,19 +1,19 @@
 'use strict';
-
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const beersSchema = mongoose.Schema({
+const beerSchema = mongoose.Schema({
   beerName: {type: String, required: true },
   style: {type: String, required: true },
   abv: {type: String, required: true },
   brewery: {type: String, required: true },
+  rating: {type: String, required: true },
   cityState: {type: String, required: true },
   notes: {type: String, required: true },
   dateAdded: {type: Date, default: Date.now }
 });
 
-beersSchema.methods.serialize = function() {
+beerSchema.methods.serialize = function() {
   return {
     id: this._id,
     beerName: this.beerName,
@@ -27,6 +27,6 @@ beersSchema.methods.serialize = function() {
   };
 };
 
-const Beers = mongoose.model('Beers', beersSchema);
+const Beer = mongoose.model('Beer', beerSchema);
 
 module.exports = {Beer};
