@@ -9,3 +9,6 @@ deploy:
   app: dry-depths-20265
   on:
     repo: anthonypagano/hopindex-api
+env:
+  - DATABASE_URL=mongodb://localhost:27017/react-capstone
+  - TEST_DATABASE_URL=mongodb://localhost:27017/react-capstone-test
