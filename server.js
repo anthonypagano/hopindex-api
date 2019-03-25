@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;
 const cors = require('cors');
 const {CLIENT_ORIGIN} = require('./config');
 
-const { TEST_DATABASE_URL, PORT } = require('./config');
+const { DATABASE_URL, PORT } = require('./config');
 
 const app = express();
 const beerRouter = require('./beerRouter');
@@ -31,14 +31,11 @@ app.get("/", (req, res) => {
 app.use('/beer', beerRouter);
 app.use('/recent', recentRouter);
 
-// both runServer and closeServer need to access the same
-// server object, so we declare `server` here, and then when
-// runServer runs, it assigns a value.
+// `server` declared here for runServer and closeServer
 let server;
 
-// this function starts our server and returns a Promise.
-// In our test code, we need a way of asynchronously starting
-// our server, since we'll be dealing with promises there.
+// starts server and returns a Promise we need a way of asynchronously 
+// starting our server for tests since promises are used there.
 function runServer(TEST_DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
       mongoose.connect(TEST_DATABASE_URL, 
@@ -58,9 +55,7 @@ function runServer(TEST_DATABASE_URL, port = PORT) {
     });
   });
 }
-// like `runServer`, this function also needs to return a promise.
-// `server.close` does not return a promise on its own, so we manually
-// create one.
+// `server.close` does not return a promise on its manually created
 function closeServer() {
   return mongoose.disconnect().then(() => {
       return new Promise((resolve, reject) => {
@@ -73,10 +68,10 @@ function closeServer() {
     });
   });
 }
-// if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+// run this block if node server.js is called 
+// runServer command exported so other code / tests can start server as needed.
 if (require.main === module) {
-  runServer(TEST_DATABASE_URL).catch(err => console.error(err));
+  runServer(DATABASE_URL).catch(err => console.error(err));
 }
 
 module.exports = { runServer, app, closeServer };

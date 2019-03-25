@@ -46,7 +46,6 @@ describe("The Hop Index app", function() {
   });
 
 describe('Endpoint Tests', function(){
-  console.log('TEST DB IS ' + TEST_DATABASE_URL)
 
   it('Should return index.html', function () {
     return chai.request(app)
@@ -91,7 +90,7 @@ describe('Endpoint Tests', function(){
       abv: "8.0",
       brewery: "Singlecut Beersmiths",
       rating: "4",
-      cityState: "Astoria, NY",        
+      cityState: "Astoria, NY",
       notes: "named after Press Your Luck"
     };
 
@@ -108,10 +107,10 @@ describe('Endpoint Tests', function(){
       res.body.beerName.should.equal(newBeer.beerName);
       res.body.style.should.equal(newBeer.style);
       res.body.abv.should.equal(newBeer.abv);
-      res.body.brewery.should.equal(newBeer.brewery);        
-      res.body.rating.should.equal(newBeer.rating);        
-      res.body.cityState.should.equal(newBeer.cityState);                
-      res.body.notes.should.equal(newBeer.notes);   
+      res.body.brewery.should.equal(newBeer.brewery);
+      res.body.rating.should.equal(newBeer.rating);
+      res.body.cityState.should.equal(newBeer.cityState);
+      res.body.notes.should.equal(newBeer.notes);
       return Beer.findById(res.body.id);
     })
     .then(function (post) {
@@ -120,10 +119,10 @@ describe('Endpoint Tests', function(){
       post.abv.should.equal(newBeer.abv);
       post.brewery.should.equal(newBeer.brewery);
       post.rating.should.equal(newBeer.rating);
-      post.cityState.should.equal(newBeer.cityState);        
+      post.cityState.should.equal(newBeer.cityState);
       post.notes.should.equal(newBeer.notes);
     });
-  });  
+  });
 
   it('delete a beer by id', function() {
 
@@ -141,5 +140,5 @@ describe('Endpoint Tests', function(){
         })
     });
 
-});
+  });
 });
