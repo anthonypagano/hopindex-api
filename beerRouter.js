@@ -64,7 +64,7 @@ router.delete('/:id', (req, res) => {
         .findByIdAndRemove(req.params.id)
         .then(() => {
             console.log(`Deleted beer with id \`${req.params.id}\``);
-            res.status(204).end();
+            res.status(200).json(`${req.params.id}`);
         });
     });
 
