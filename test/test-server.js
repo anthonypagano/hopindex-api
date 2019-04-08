@@ -135,7 +135,7 @@ describe('Endpoint Tests', function(){
         return chai.request(app).delete(`/beer/${beer.id}`);
         })
         .then(res => {
-        res.should.have.status(204);
+        res.should.have.status(200);
         return Beer.findById(beer.id);
         })
     });
