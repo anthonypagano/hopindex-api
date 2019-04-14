@@ -36,9 +36,9 @@ let server;
 
 // starts server and returns a Promise we need a way of asynchronously 
 // starting our server for tests since promises are used there.
-function runServer(TEST_DATABASE_URL, port = PORT) {
+function runServer(DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
-      mongoose.connect(TEST_DATABASE_URL, 
+      mongoose.connect(DATABASE_URL, 
         { useNewUrlParser: true }, 
         err => {
           if (err) {
