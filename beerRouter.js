@@ -17,17 +17,6 @@ router.get('/', (req, res) => {
         });
     });
 
-//get a beer by a specific id
-router.get('/:id', (req, res) => {
-    Beer
-        .findById(req.params.id)
-        .then(beer => res.json(beer.serialize()))
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({ error: '500 Server Error' });
-        });
-    });
-
 //add a new beer to the db
 router.post('/', (req, res) => {
     console.log(req);
