@@ -5,7 +5,7 @@ services:
 deploy:
   provider: heroku
   api_key:
-    secure: 3d1dcf89-2035-4fe9-b681-9ebad93b93bf
+    secure: d774466a-2d08-4ec8-bbdc-28a8a2e627e4
   app: dry-depths-20265
   on:
     repo: anthonypagano/hopindex-api
