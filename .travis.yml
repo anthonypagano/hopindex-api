@@ -10,5 +10,5 @@ deploy:
   on:
     repo: anthonypagano/hopindex-api
 env:
-  - DATABASE_URL=mongodb://apagano76:76apagano@react-capstone.euuin.mongodb.net/react-capstone?authSource=admin&replicaSet=atlas-c8umbj-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true
-  - TEST_DATABASE_URL=mongodb://apagano76:76apagano@react-capstone-test.ip7re.mongodb.net/react-capstone-test?authSource=admin&replicaSet=atlas-11oy03-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true
+  - DATABASE_URL=mongodb+srv//://apagano76:76apagano@react-capstone.euuin.mongodb.net/react-capstone?authSource=admin&replicaSet=atlas-c8umbj-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true
+  - TEST_DATABASE_URL=mongodb+srv://apagano76:76apagano@react-capstone-test.ip7re.mongodb.net/react-capstone-test?authSource=admin&replicaSet=atlas-11oy03-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true
