@@ -1,7 +1,7 @@
 # hopindex-api
 
 ## Base<br>
-https://dry-depths-20265.herokuapp.com<br>
+https://hopindex-api.vercel.app/<br>
 <br>
 ## Endpoints<br>
 POST /<br>
