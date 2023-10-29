@@ -1,6 +1,6 @@
 'use strict';
-exports.API_ORIGIN = 'https://hopindex-api.vercel.app/';
-exports.CLIENT_ORIGIN = 'https://hopindex-client.vercel.app/';
+exports.API_ORIGIN = 'https://hopindex-api.vercel.app';
+exports.CLIENT_ORIGIN = 'https://hopindex-client.vercel.app';
 exports.DATABASE_URL = 'mongodb+srv://apagano76:76apagano@hopindex.jbte0v1.mongodb.net/?retryWrites=true&w=majority';
 exports.PORT = process.env.PORT || 8080;
 //exports.API_ORIGIN = 'https://dry-depths-20265.herokuapp.com';

@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-//const cors = require('cors');
+const cors = require('cors');
 const {CLIENT_ORIGIN} = require('./config');
 
 const { DATABASE_URL, PORT } = require('./config');
@@ -18,16 +18,11 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
-
-//app.use(
-//  cors({
-//      origin: CLIENT_ORIGIN
-//  })
-//);
+app.use(
+  cors({
+      origin: CLIENT_ORIGIN
+  })
+);
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
