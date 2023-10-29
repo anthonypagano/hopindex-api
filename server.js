@@ -18,11 +18,24 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-app.use(
-  cors({
-      origin: CLIENT_ORIGIN
-  })
-);
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
+//app.use(
+//  cors({
+//      origin: CLIENT_ORIGIN
+//  })
+//);
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
