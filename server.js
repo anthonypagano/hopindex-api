@@ -36,11 +36,11 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.use(
-//  cors({
-//      origin: CLIENT_ORIGIN
-///  })
-//);
+app.use(
+  cors({
+      origin: CLIENT_ORIGIN
+  })
+);
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
