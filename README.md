@@ -1,7 +1,7 @@
 # hopindex-api
 
 ## Base<br>
-https://hopindex-api.vercel.app<br>
+https://hopindex-api-bc2ac5fac72f.herokuapp.com<br>
 <br>
 ## Endpoints<br>
 POST /<br>
